@@ -1,0 +1,6 @@
+/public/bundles/
+/public/assets/
+/var/
+/vendor/
+.idea
+docker
