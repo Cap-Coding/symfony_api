@@ -80,12 +80,11 @@ RUN set -eux; \
 	composer clear-cache
 
 # copy only specifically what we need
-COPY .env .env.prod .env.test ./
+COPY .env .env.test ./
 COPY bin bin/
 COPY config config/
 COPY public public/
 COPY src src/
-COPY infra infra/
 
 RUN set -eux; \
 	mkdir -p var/cache var/log; \

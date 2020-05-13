@@ -1,3 +1,14 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+product_create:
+  path: /api/v1/products
+  controller: App\Controller\ProductController::createAction
+  methods: [POST]
+
+product_list:
+  path: /api/v1/products
+  controller: App\Controller\ProductController::indexAction
+  methods: [GET]
+
+order_create:
+  path: /api/v1/orders
+  controller: App\Controller\OrderController::createAction
+  methods: [POST]
