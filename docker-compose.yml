@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+  php:
+    build:
+      context: .
+      target: app_php
+      cache_from:
+        - sf.forms/app/php:dev
+        - sf.forms/app/nginx:dev
+    image: sf.forms/app/php:dev
+    depends_on:
+      - postgres
+    environment:
+      - APP_ENV=dev
+      - APP_DEBUG=1
+      - PHP_DATE_TIMEZONE=${PHP_DATE_TIMEZONE:-UTC}
+      - XDEBUG_CONFIG=remote_host=docker.for.mac.localhost
+      - PHP_IDE_CONFIG=serverName=localhost
+    volumes:
+      - .:/srv/app:rw,cached
+      - ./var:/srv/app/var:rw
+      - ./public:/srv/app/public:rw,delegated
+
+  postgres:
+    image: postgres:12.2-alpine
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=sf_user
+      - POSTGRES_PASSWORD=nopassword
+      - PGDATA=/var/lib/postgresql/data
+    volumes:
+      - db-data:/var/lib/postgresql/data:rw
+    ports:
+      - "5432:5432"
+
+  nginx:
+    build:
+      context: .
+      target: app_nginx
+      cache_from:
+        - sf.forms/app/php:dev
+        - sf.forms/app/nginx:dev
+    image: sf.forms/app/nginx:dev
+    depends_on:
+      - php
+    volumes:
+      - ./public:/srv/app/public:ro
+    ports:
+      - "8080:80"
+
+volumes:
+  db-data:
