@@ -24,9 +24,9 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="sku", type="string", length=100)
+     * @ORM\Column(name="code", type="string", length=100)
      */
-    private string $sku;
+    private string $code;
 
     /**
      * @var string
@@ -38,7 +38,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string")
+     * @ORM\Column(name="description", type="string")
      */
     private string $description;
 
@@ -60,17 +60,17 @@ class Product
     /**
      * @return string
      */
-    public function getSku(): string
+    public function getCode(): string
     {
-        return $this->sku;
+        return $this->code;
     }
 
     /**
-     * @param string $sku
+     * @param string $code
      */
-    public function setSku(string $sku): void
+    public function setCode(string $code): void
     {
-        $this->sku = $sku;
+        $this->code = $code;
     }
 
     /**

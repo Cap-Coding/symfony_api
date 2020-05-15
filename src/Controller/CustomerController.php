@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Order;
+use App\Entity\Customer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class OrderController extends AbstractApiController
+class CustomerController extends AbstractApiController
 {
     public function indexAction(Request $request): Response
     {
-        $orders = $this->getDoctrine()->getRepository(Order::class)->findAll();
+        $customers = $this->getDoctrine()->getRepository(Customer::class)->findAll();
 
-        return $this->json($orders);
+        return $this->json($customers);
     }
 
     public function createAction(Request $request): Response

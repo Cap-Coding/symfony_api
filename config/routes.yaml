@@ -12,3 +12,18 @@ order_create:
   path: /api/v1/orders
   controller: App\Controller\OrderController::createAction
   methods: [POST]
+
+order_list:
+  path: /api/v1/orders
+  controller: App\Controller\OrderController::indexAction
+  methods: [GET]
+
+customer_create:
+  path: /api/v1/customers
+  controller: App\Controller\CustomerController::createAction
+  methods: [POST]
+
+customer_list:
+  path: /api/v1/customers
+  controller: App\Controller\CustomerController::indexAction
+  methods: [GET]

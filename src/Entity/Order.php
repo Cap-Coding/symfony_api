@@ -38,11 +38,11 @@ class Order
     private Collection $products;
 
     /**
-     * @var \DateTimeImmutable
+     * @var \DateTime
      *
-     * @ORM\Column(name="date_time", type="datetime_immutable")
+     * @ORM\Column(name="date_time", type="datetime")
      */
-    private \DateTimeImmutable $dateTime;
+    private \DateTime $dateTime;
 
     /**
      * @var string|null
@@ -81,17 +81,17 @@ class Order
     }
 
     /**
-     * @return \DateTimeImmutable
+     * @return \DateTime
      */
-    public function getDateTime(): \DateTimeImmutable
+    public function getDateTime(): \DateTime
     {
         return $this->dateTime;
     }
 
     /**
-     * @param \DateTimeImmutable $dateTime
+     * @param \DateTime $dateTime
      */
-    public function setDateTime(\DateTimeImmutable $dateTime): void
+    public function setDateTime(\DateTime $dateTime): void
     {
         $this->dateTime = $dateTime;
     }
