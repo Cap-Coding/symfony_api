@@ -1,29 +1,9 @@
-product_create:
-  path: /api/v1/products
-  controller: App\Controller\ProductController::createAction
-  methods: [POST]
-
-product_list:
-  path: /api/v1/products
-  controller: App\Controller\ProductController::indexAction
+order_show:
+  path: /api/v1/orders/{id}
+  controller: App\Controller\OrderController::showAction
   methods: [GET]
 
-order_create:
-  path: /api/v1/orders
-  controller: App\Controller\OrderController::createAction
-  methods: [POST]
-
-order_list:
-  path: /api/v1/orders
-  controller: App\Controller\OrderController::indexAction
-  methods: [GET]
-
-customer_create:
-  path: /api/v1/customers
-  controller: App\Controller\CustomerController::createAction
-  methods: [POST]
-
-customer_list:
-  path: /api/v1/customers
-  controller: App\Controller\CustomerController::indexAction
+admin_customer_statistic:
+  path: /api/v1/admin/customer/{id}/statistic
+  controller: App\Controller\CustomerStatisticController::indexAction
   methods: [GET]

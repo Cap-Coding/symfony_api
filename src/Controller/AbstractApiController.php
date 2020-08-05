@@ -4,8 +4,45 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
+use Symfony\Component\HttpFoundation\Response;
 
-abstract class AbstractApiController extends AbstractController
+abstract class AbstractApiController extends AbstractFOSRestController
 {
+    protected const SERIALIZATION_GROUP_DEFAULT = 'Default';
+    protected const SERIALIZATION_GROUP_ADMIN = 'Admin';
+
+    /** @var array */
+    private $serializationGroups = [
+        AbstractApiController::SERIALIZATION_GROUP_DEFAULT,
+    ];
+
+    protected function respond($data, int $statusCode = Response::HTTP_OK): Response
+    {
+        $view = $this->view($data, $statusCode);
+
+        $serializationGroups = $this->getSerializationGroups();
+
+        if (!empty($serializationGroups)) {
+            $view->getContext()->setGroups($serializationGroups);
+        }
+
+        return $this->handleView($view);
+    }
+
+    /**
+     * @return array
+     */
+    protected function getSerializationGroups(): array
+    {
+        return $this->serializationGroups;
+    }
+
+    /**
+     * @param array $serializationGroups
+     */
+    protected function setSerializationGroups(array $serializationGroups): void
+    {
+        $this->serializationGroups = $serializationGroups;
+    }
 }

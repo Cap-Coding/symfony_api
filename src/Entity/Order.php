@@ -26,7 +26,7 @@ class Order
     /**
      * @var Customer
      *
-     * @ORM\OneToOne(targetEntity="Customer", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Customer", cascade={"all"})
      */
     private Customer $customer;
 
@@ -40,16 +40,16 @@ class Order
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_time", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      */
-    private \DateTime $dateTime;
+    private \DateTime $createdAt;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="comments", type="text", nullable=true)
      */
-    private ?string $comments;
+    private ?string $comment;
 
     public function __construct()
     {
@@ -83,17 +83,17 @@ class Order
     /**
      * @return \DateTime
      */
-    public function getDateTime(): \DateTime
+    public function getCreatedAt(): \DateTime
     {
-        return $this->dateTime;
+        return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $dateTime
+     * @param \DateTime $createdAt
      */
-    public function setDateTime(\DateTime $dateTime): void
+    public function setCreatedAt(\DateTime $createdAt): void
     {
-        $this->dateTime = $dateTime;
+        $this->createdAt = $createdAt;
     }
 
     /**
@@ -119,16 +119,16 @@ class Order
     /**
      * @return string
      */
-    public function getComments(): string
+    public function getComment(): string
     {
-        return $this->comments;
+        return $this->comment;
     }
 
     /**
-     * @param string $comments
+     * @param string $comment
      */
-    public function setComments(string $comments): void
+    public function setComment(string $comment): void
     {
-        $this->comments = $comments;
+        $this->comment = $comment;
     }
 }
