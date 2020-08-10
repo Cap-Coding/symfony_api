@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Dto\Response\Transformer;
 
 use App\Dto\Response\OrderResponseDto;
-use App\Dto\Response\ResponseDtoInterface;
 use App\Entity\Order;
 
 class OrderResponseDtoTransformer extends AbstractResponseDtoTransformer
@@ -24,9 +23,9 @@ class OrderResponseDtoTransformer extends AbstractResponseDtoTransformer
     /**
      * @param Order $order
      *
-     * @return ResponseDtoInterface
+     * @return mixed
      */
-    public function transformFromObject($order): ResponseDtoInterface
+    public function transformFromObject($order)
     {
         $dto = new OrderResponseDto();
         $dto->createdAt = $order->getCreatedAt();

@@ -15,13 +15,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Order
 {
     /**
-     * @var int
+     * @var int|null
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private int $id;
+    private ?int $id;
 
     /**
      * @var Customer
@@ -47,7 +47,7 @@ class Order
     /**
      * @var string|null
      *
-     * @ORM\Column(name="comments", type="text", nullable=true)
+     * @ORM\Column(name="comment", type="text", nullable=true)
      */
     private ?string $comment;
 

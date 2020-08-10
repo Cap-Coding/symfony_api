@@ -6,7 +6,7 @@ namespace App\Dto\Response;
 
 use JMS\Serializer\Annotation as Serialization;
 
-class ProductResponseDto implements ResponseDtoInterface
+class ProductResponseDto
 {
     /**
      * @Serialization\Type("string")

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Dto\Response\Transformer;
 
 use App\Dto\Response\CustomerResponseDto;
-use App\Dto\Response\ResponseDtoInterface;
 use App\Entity\Customer;
 
 class CustomerResponseDtoTransformer extends AbstractResponseDtoTransformer
@@ -13,9 +12,9 @@ class CustomerResponseDtoTransformer extends AbstractResponseDtoTransformer
     /**
      * @param Customer $customer
      *
-     * @return ResponseDtoInterface
+     * @return mixed
      */
-    public function transformFromObject($customer): ResponseDtoInterface
+    public function transformFromObject($customer)
     {
         $dto = new CustomerResponseDto();
         $dto->email = $customer->getEmail();

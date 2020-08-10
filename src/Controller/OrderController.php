@@ -6,7 +6,6 @@ namespace App\Controller;
 
 use App\Dto\Response\Transformer\OrderResponseDtoTransformer;
 use App\Entity\Order;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends AbstractApiController
@@ -18,7 +17,7 @@ class OrderController extends AbstractApiController
         $this->orderResponseDtoTransformer = $orderResponseDtoTransformer;
     }
 
-    public function showAction(Request $request): Response
+    public function showAction(): Response
     {
         $orders = $this->getDoctrine()->getRepository(Order::class)->findAll();
 

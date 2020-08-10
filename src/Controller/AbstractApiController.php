@@ -21,21 +21,11 @@ abstract class AbstractApiController extends AbstractFOSRestController
     {
         $view = $this->view($data, $statusCode);
 
-        $serializationGroups = $this->getSerializationGroups();
-
-        if (!empty($serializationGroups)) {
-            $view->getContext()->setGroups($serializationGroups);
+        if (!empty($this->serializationGroups)) {
+            $view->getContext()->setGroups($this->serializationGroups);
         }
 
         return $this->handleView($view);
-    }
-
-    /**
-     * @return array
-     */
-    protected function getSerializationGroups(): array
-    {
-        return $this->serializationGroups;
     }
 
     /**

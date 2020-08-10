@@ -9,11 +9,11 @@ use JMS\Serializer\Annotation as Serialization;
 /**
  * @Serialization\VirtualProperty(
  *     "firstName",
- *     exp="object.getQwe()",
+ *     exp="object.getFirstName()",
  *     options={@Serialization\SerializedName("my_first_name")}
  *  )
  */
-class CustomerStatisticResponseDto implements ResponseDtoInterface
+class CustomerStatisticResponseDto
 {
     /**
      * @Serialization\Type("integer")
@@ -50,8 +50,11 @@ class CustomerStatisticResponseDto implements ResponseDtoInterface
         $this->totalOrdersPrice = $totalOrdersPrice;
     }
 
-    public function getQwe(): string
+    /**
+     * @return string
+     */
+    public function getFirstName(): string
     {
-        return 'qqqqq';
+        return 'My name';
     }
 }

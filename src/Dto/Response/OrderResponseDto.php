@@ -6,7 +6,7 @@ namespace App\Dto\Response;
 
 use JMS\Serializer\Annotation as Serialization;
 
-class OrderResponseDto implements ResponseDtoInterface
+class OrderResponseDto
 {
     /**
      * @Serialization\Type("DateTime<'Y-m-d\TH:i:s'>")

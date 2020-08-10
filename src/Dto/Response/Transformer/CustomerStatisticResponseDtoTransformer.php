@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Dto\Response\Transformer;
 
 use App\Dto\Response\CustomerStatisticResponseDto;
-use App\Dto\Response\ResponseDtoInterface;
 use App\Entity\Customer;
 use App\Repository\OrderRepository;
 
@@ -21,9 +20,9 @@ class CustomerStatisticResponseDtoTransformer extends AbstractResponseDtoTransfo
     /**
      * @param Customer $customer
      *
-     * @return ResponseDtoInterface
+     * @return mixed
      */
-    public function transformFromObject($customer): ResponseDtoInterface
+    public function transformFromObject($customer)
     {
         $dto = new CustomerStatisticResponseDto();
         $dto->customerId = $customer->getId();

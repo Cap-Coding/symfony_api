@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Dto\Response\Transformer;
 
 use App\Dto\Response\ProductResponseDto;
-use App\Dto\Response\ResponseDtoInterface;
 use App\Entity\Product;
 
 class ProductResponseDtoTransformer extends AbstractResponseDtoTransformer
@@ -13,9 +12,9 @@ class ProductResponseDtoTransformer extends AbstractResponseDtoTransformer
     /**
      * @param Product $product
      *
-     * @return ResponseDtoInterface
+     * @return mixed
      */
-    public function transformFromObject($product): ResponseDtoInterface
+    public function transformFromObject($product)
     {
         $dto = new ProductResponseDto();
         $dto->code = $product->getCode();
