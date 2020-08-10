@@ -23,6 +23,10 @@ class CustomerStatisticController extends AbstractApiController
 
         $customer = reset($customers);
 
+        if (false/*\in_array('ROLE_ADMIN', $this->getUser()->getRoles(), true)*/) {
+            $this->addSerializationGroup(AbstractApiController::SERIALIZATION_GROUP_ADMIN);
+        }
+
         $dto = $this->customerStatisticResponseDtoTransformer->transformFromObject($customer);
 
         return $this->respond($dto);

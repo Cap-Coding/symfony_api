@@ -24,7 +24,7 @@ class ProductResponseDto
     public string $description;
 
     /**
-     * @Serialization\Type("integer")
+     * @Serialization\Type("int")
      */
     public int $price;
 }

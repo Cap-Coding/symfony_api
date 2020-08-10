@@ -6,16 +6,15 @@ namespace App\Dto\Response\Transformer;
 
 abstract class AbstractResponseDtoTransformer implements ResponseDtoTransformerInterface
 {
-    /**
-     * @inheritdoc
-     */
     public function transformFromObjects(iterable $objects): iterable
     {
-        $dtos = [];
+        $dto = [];
+
         foreach ($objects as $object) {
-            $dtos[] = $this->transformFromObject($object);
+            $dto[] = $this->transformFromObject($object);
         }
 
-        return $dtos;
+        return $dto;
     }
+
 }

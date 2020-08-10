@@ -8,53 +8,49 @@ use JMS\Serializer\Annotation as Serialization;
 
 /**
  * @Serialization\VirtualProperty(
- *     "firstName",
- *     exp="object.getFirstName()",
- *     options={@Serialization\SerializedName("my_first_name")}
- *  )
+ *     "completedOrders",
+ *     exp="object.getCompletedOrders()",
+ *     options={@Serialization\SerializedName("completed_orders")}
+ * )
  */
 class CustomerStatisticResponseDto
 {
     /**
-     * @Serialization\Type("integer")
+     * @Serialization\Type("int")
      */
     public int $customerId;
 
     /**
-     * @Serialization\Type("integer")
+     * @Serialization\Type("int")
      */
-    public int $totalOrderCount;
+    public int $ordersTotalCount;
 
     /**
      * @Serialization\Type("int")
-     * @Serialization\Accessor(getter="getTotalOrdersPrice")
-     * @Serialization\Groups({"Admin"})
+     * @Serialization\Accessor(getter="getOrdersTotalPrice")
+     * @Serialization\Groups("Admin")
      */
-    private \Closure $totalOrdersPrice;
+    private \Closure $ordersTotalPrice;
 
     /**
      * @return int
      */
-    public function getTotalOrdersPrice(): int
+    public function getOrdersTotalPrice(): int
     {
-        $callable = $this->totalOrdersPrice;
-
+        $callable = $this->ordersTotalPrice;
         return $callable();
     }
 
     /**
-     * @param \Closure $totalOrdersPrice
+     * @param \Closure $ordersTotalPrice
      */
-    public function setTotalOrdersPrice(\Closure $totalOrdersPrice): void
+    public function setOrdersTotalPrice(\Closure $ordersTotalPrice): void
     {
-        $this->totalOrdersPrice = $totalOrdersPrice;
+        $this->ordersTotalPrice = $ordersTotalPrice;
     }
 
-    /**
-     * @return string
-     */
-    public function getFirstName(): string
+    public function getCompletedOrders(): int
     {
-        return 'My name';
+        return random_int(10, 25);
     }
 }

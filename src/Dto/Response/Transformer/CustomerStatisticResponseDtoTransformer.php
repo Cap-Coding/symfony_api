@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Dto\Response\Transformer;
 
+use App\Dto\Exception\UnexpectedTypeException;
 use App\Dto\Response\CustomerStatisticResponseDto;
 use App\Entity\Customer;
 use App\Repository\OrderRepository;
@@ -20,16 +21,20 @@ class CustomerStatisticResponseDtoTransformer extends AbstractResponseDtoTransfo
     /**
      * @param Customer $customer
      *
-     * @return mixed
+     * @return CustomerStatisticResponseDto
      */
-    public function transformFromObject($customer)
+    public function transformFromObject($customer): CustomerStatisticResponseDto
     {
+        if (!$customer instanceof Customer) {
+            throw new UnexpectedTypeException('Expected type of Customer but got ' . \get_class($customer));
+        }
+
         $dto = new CustomerStatisticResponseDto();
         $dto->customerId = $customer->getId();
-        $dto->totalOrderCount = $this->orderRepository->countAllByCustomer($customer);
+        $dto->ordersTotalCount = $this->orderRepository->getTotalCountByCustomer($customer);
 
-        $dto->setTotalOrdersPrice(function() use ($customer) {
-            return $this->orderRepository->totalPriceByCustomer($customer);
+        $dto->setOrdersTotalPrice(function() use ($customer) {
+            return $this->orderRepository->getTotalPriceByCustomer($customer);
         });
 
         return $dto;

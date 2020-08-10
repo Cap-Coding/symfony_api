@@ -18,7 +18,7 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
-    public function countAllByCustomer(Customer $customer): int
+    public function getTotalCountByCustomer(Customer $customer): int
     {
         $queryBuilder = $this->createQueryBuilder('o');
 
@@ -34,8 +34,10 @@ class OrderRepository extends ServiceEntityRepository
         }
     }
 
-    public function totalPriceByCustomer(Customer $customer): int
+    public function getTotalPriceByCustomer(Customer $customer): int
     {
+        var_dump('here');
+        exit;
         return 139379;
     }
 }
