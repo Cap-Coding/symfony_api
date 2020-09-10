@@ -190,6 +190,9 @@
     "symfony/dependency-injection": {
         "version": "v5.0.8"
     },
+    "symfony/deprecation-contracts": {
+        "version": "v2.2.0"
+    },
     "symfony/doctrine-bridge": {
         "version": "v5.0.8"
     },
@@ -262,9 +265,6 @@
         "version": "v5.0.8"
     },
     "symfony/http-kernel": {
-        "version": "v5.0.8"
-    },
-    "symfony/inflector": {
         "version": "v5.0.8"
     },
     "symfony/intl": {
