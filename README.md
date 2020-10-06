@@ -1,5 +1,9 @@
 # Video tutorials
 
+## Create Symfony 5 project with Docker and Postgres
+    
+There is a [repository](https://github.com/Cap-Coding/symfony_docker) and here is a [video](https://youtu.be/69wjRPQ0A_U)
+
 ## How to use data transfer objects (DTO) in Symfony API application
     
 There is a [branch](https://github.com/Cap-Coding/symfony_api/tree/data_transfer_objects) and here is a [video](https://youtu.be/XxIhzgGv214)
