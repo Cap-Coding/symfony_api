@@ -3,4 +3,8 @@
 /var/
 /vendor/
 .idea
-docker
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
